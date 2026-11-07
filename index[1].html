@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div>
+        <p class="eyebrow">PERSONAL FINANCE</p>
+        <h1>Expense Tracker</h1>
+        <p class="subtitle">Track your spending. Stay in control.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="summary-grid" aria-label="Expense summary">
+      <article class="summary-card">
+        <p>Total Expenses</p>
+        <h2 id="totalExpenses">₹0.00</h2>
+        <span>All recorded expenses</span>
+      </article>
+
+      <article class="summary-card">
+        <p>This Month</p>
+        <h2 id="monthlyExpenses">₹0.00</h2>
+        <span>Expenses for the current month</span>
+      </article>
+
+      <article class="summary-card">
+        <p>Transactions</p>
+        <h2 id="transactionCount">0</h2>
+        <span>Total recorded transactions</span>
+      </article>
+    </section>
+
+    <p id="message" class="message" role="status" aria-live="polite" hidden></p>
+
+    <section class="panel" id="expenseFormSection">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR MONEY, ORGANIZED</p>
+          <h2 id="formHeading">Add Expense</h2>
+        </div>
+      </div>
+
+      <form id="expenseForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="title">Expense Title *</label>
+            <input id="title" name="title" type="text"
+              placeholder="e.g. Groceries" maxlength="100" required>
+          </div>
+
+          <div class="form-group">
+            <label for="amount">Amount (₹) *</label>
+            <input id="amount" name="amount" type="number"
+              placeholder="e.g. 500" min="0.01" step="0.01" required>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category *</label>
+            <select id="category" name="category" required>
+              <option value="">Select category</option>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Bills">Bills</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Health">Health</option>
+              <option value="Education">Education</option>
+              <option value="Travel">Travel</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date *</label>
+            <input id="date" name="date" type="date" required>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="description">Description</label>
+            <textarea id="description" name="description"
+              placeholder="Add a note (optional)" rows="3" maxlength="500"></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="submitButton" type="submit" class="primary-btn">Add Expense</button>
+          <button id="cancelEditButton" type="button" class="secondary-btn" hidden>
+            Cancel Edit
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR RECORDS</p>
+          <h2>Expense History</h2>
+        </div>
+      </div>
+
+      <div class="filter-grid">
+        <div class="form-group">
+          <label for="searchInput">Search</label>
+          <input id="searchInput" type="search"
+            placeholder="Search title or description">
+        </div>
+
+        <div class="form-group">
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter">
+            <option value="">All categories</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Bills">Bills</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Health">Health</option>
+            <option value="Education">Education</option>
+            <option value="Travel">Travel</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="monthFilter">Month</label>
+          <input id="monthFilter" type="month">
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Amount</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="expenseTableBody">
+            <tr>
+              <td colspan="6">Loading expenses...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Personal Expense Tracker · Spend wisely, live better.</p>
+    </footer>
+  </main>
+</body>
+</html>
